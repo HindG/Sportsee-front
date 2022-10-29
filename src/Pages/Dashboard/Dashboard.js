@@ -9,6 +9,8 @@ function Dashboard() {
         <Fragment>
             <Header />
             <SideBar />
+            <h1 className="dashboard--title">Bonjour <span className="dashboard--title__name">Thomas</span></h1>
+            <h2 className="dashboard--subtitle">Félicitation ! Vous avez explosé vos objectifs hier 👏</h2>
             <div className="dashboard--graph__container">
                 <BarsChart />
             </div>
