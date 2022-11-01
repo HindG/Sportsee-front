@@ -1,5 +1,12 @@
-.dashboard--graph__container {
+.dashboard--dashboard__container {
     margin-left: 117px;
+    display: flex;
+}
+
+.dashboard--graphs__container {}
+
+.dashboard--indicators__container {
+    margin-top: 77px;
 }
 
 .dashboard--title {
