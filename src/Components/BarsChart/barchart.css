@@ -1,5 +1,5 @@
 .barchart--container {
-    margin: 77px 31px 28px 109px;
+    margin: 77px 31px 28px 69px;
     background-color: #FBFBFB;
     padding-bottom: 23px;
     width: 70%;
@@ -40,4 +40,17 @@
 .barchart--circle__red {
     background-color: #E60000;
     margin-left: 32px;
+}
+
+.customtooltip__container {
+    background-color: #E60000;
+    width: 39px;
+    height: 53px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 7px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
 }

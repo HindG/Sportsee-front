@@ -7,10 +7,22 @@ import {
     Tooltip,
     ResponsiveContainer
 } from "recharts";
-import "./barchart.css"
+import "./barchart.css";
+import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import CustomTooltip from "./elements/CustomTooltip";
 
-function BarsChart( props ) {
-    const { activity } = props;
+function BarsChart() {
+    const { id } = useParams();
+    const [activity, setActivity] = useState([]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/user/${id}/activity`)
+            .then(response => {
+                setActivity(response.data.data.sessions)
+            })
+    }, [id]);
 
     return (
         <div className="barchart--container">
@@ -38,7 +50,7 @@ function BarsChart( props ) {
                     <XAxis dataKey="day" tickLine={false} tick={{ fontSize: 14 }} dy={15} />
                     <YAxis orientation="right" yAxisId="right" axisLine={false} tickLine={false} dataKey="kilogram" type="number" tick={{ fontSize: 14 }} domain={['dataMin-1', 'dataMax+1']} />
                     <YAxis orientation="left" axisLine={false} tick={false} yAxisId="left" dataKey="calories" type="number" domain={[100, 500]} />
-                    <Tooltip />
+                    <Tooltip content={<CustomTooltip />} />
                     <Bar dataKey="kilogram" yAxisId="right" fill="#282D30" unit="kg" barSize={7} name="Poids (kg)" radius={[3, 3, 0, 0]} />
                     <Bar dataKey="calories" yAxisId="left" fill="#E60000" unit="Kcal" name="Calories brûlées (kCal)" barSize={7} radius={[3, 3, 0, 0]} />
                 </BarChart >
