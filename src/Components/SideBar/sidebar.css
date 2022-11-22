@@ -4,8 +4,8 @@
     align-items: center;
     background-color: #000000;
     width: 117px;
-    height: 100%;
-    position: fixed;
+    height: 240%;
+    position: absolute;
 }
 
 .sidebar--icons {
@@ -27,5 +27,5 @@
     font-size: 12px;
     line-height: 24px;
     width: 150px;
-    margin-top: 164px;
+    margin-top: 220px;
 }

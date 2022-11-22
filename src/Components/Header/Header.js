@@ -1,6 +1,12 @@
 import Logo from "../../img/logo.png"
 import "./header.css"
 
+/**
+ *@name Header
+ * @description header of the website
+ * @returns {JSX.Element}
+ */
+
 function Header() {
     return (
         <div className="header--container">

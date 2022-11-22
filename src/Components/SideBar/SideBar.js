@@ -4,6 +4,12 @@ import IconSwim from "../../img/iconswim.png"
 import IconBike from "../../img/iconbike.png"
 import IconGym from "../../img/icongym.png"
 
+/**
+ *@name SideBar
+ * @description sidebar of the website
+ * @returns {JSX.Element}
+ */
+
 function SideBar() {
     return (
         <div className="sidebar--container">

@@ -3,6 +3,15 @@ import Calories from "../../img/calories-icon.png"
 import Proteines from "../../img/protein-icon.png"
 import Glucides from "../../img/carbs-icon.png"
 import Lipides from "../../img/fat-icon.png"
+import PropTypes from 'prop-types';
+
+/**
+ *@name IndicatorCard
+ *@description Card of the key indicators
+ * @param {string} type type of the indicator : calories, protein, carbohydrate or lipid
+ * @param {number} count quantity of the indicator
+ * @returns {JSX.Element}
+ */
 
 function IndicatorCard(props) {
     const { type, count } = props;
@@ -34,6 +43,11 @@ function IndicatorCard(props) {
             </div>
         </div>
     )
+}
+
+IndicatorCard.propTypes = {
+    type: PropTypes.string,
+    count: PropTypes.number,
 }
 
 export default IndicatorCard;
