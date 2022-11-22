@@ -4,6 +4,8 @@
 }
 
 .dashboard--indicators__container {
+    display: flex;
+    flex-direction: column;
     margin-top: 77px;
 }
 
@@ -51,6 +53,7 @@
     display: flex;
     flex-direction: row;
     margin-top: 28px;
+    flex-wrap: wrap;
 }
 
 .dashboard--aerachart__container {
@@ -98,4 +101,50 @@
     height: 175px;
     top: 39px;
     left: 39px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .dashboard--dashboard__container {
+        flex-direction: column;
+    }
+
+    .dashboard--barchart__container {
+        margin: 77px 15px 28px 30px;
+        width: 800px;
+    }
+
+    .dashboard--indicators__container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 300px;
+        margin-left: 80px;
+        width: 800px;
+        justify-content: center;
+    }
+
+    .dashboard--radialchart__container {
+        margin-top: 30px;
+    }
+
+    .barchart--smallcharts__containers {
+        justify-content: center;
+    }
+
+    .card--container {
+        margin-right: 30px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .dashboard--barchart__container {
+        width: 600px;
+    }
+
+    .dashboard--indicators__container {
+        margin-left: 30px;
+    }
+
+    .dashboard--indicators__container {
+        width: 600px;
+    }
 }
