@@ -61,7 +61,7 @@ function BarsChart() {
                     <XAxis dataKey="weekDay" tickLine={false} tick={{ fontSize: 14 }} dy={15} />
                     <YAxis orientation="right" yAxisId="right" axisLine={false} tickLine={false} dataKey="kilogram" type="number" tick={{ fontSize: 14 }} domain={['dataMin-1', 'dataMax+1']} />
                     <YAxis orientation="left" axisLine={false} tick={false} yAxisId="left" dataKey="calories" type="number" domain={[100, 500]} />
-                    <Tooltip content={<CustomTooltip payload={data} />} />
+                    <Tooltip wrapperStyle={{ outline: "none" }} content={<CustomTooltip payload={data} />} />
                     <Bar dataKey="kilogram" yAxisId="right" fill="#282D30" unit="kg" barSize={7} name="Poids (kg)" radius={[3, 3, 0, 0]} />
                     <Bar dataKey="calories" yAxisId="left" fill="#E60000" unit="Kcal" name="Calories brûlées (kCal)" barSize={7} radius={[3, 3, 0, 0]} />
                 </BarChart >

@@ -67,7 +67,7 @@ function AreasChart() {
                     stroke="url(#sessionLengthColor)"
                     strokeWidth={1.8}
                     type="monotone" />
-                <Tooltip content={<CustomTooltip payload={data.sessionsLength} />} />
+                <Tooltip wrapperStyle={{ outline: "none" }} content={<CustomTooltip payload={data.sessionsLength} />} />
                 <Area type="monotone"
                     dataKey="sessionLength"
                     stroke="#fff"
