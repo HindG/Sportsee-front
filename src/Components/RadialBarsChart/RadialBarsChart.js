@@ -7,8 +7,8 @@ import {
 } from "recharts";
 import "./radialbarschart.css";
 import { useParams } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import { getScore } from "../../service";
 
 /**
  *@name RadialBarsChart
@@ -20,12 +20,11 @@ function RadialBarsChart() {
     const { id } = useParams();
     const [percentage, setPercentage] = useState(0);
 
-    useEffect(() => {
-        axios.get(`http://localhost:3000/user/${id}`)
-            .then(response => {
-                setPercentage(response.data.data.score ? response.data.data.score * 100 : 0)
-            })
-    });
+
+    getScore(id).then(data => {
+        setPercentage(data * 100)
+    })
+
 
     const Content = () => (<div className="radialbarschart--title">
         <span>{percentage}%</span>

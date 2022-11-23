@@ -9,9 +9,9 @@ import {
 } from "recharts";
 import "./barchart.css";
 import { useParams } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { getActivityData } from "../../service";
 
 /**
  *@name RadarsChart
@@ -23,12 +23,9 @@ function BarsChart() {
     const { id } = useParams();
     const [activity, setActivity] = useState([]);
 
-    useEffect(() => {
-        axios.get(`http://localhost:3000/user/${id}/activity`)
-            .then(response => {
-                setActivity(response.data.data.sessions)
-            })
-    }, [id]);
+    getActivityData(id).then(data => {
+        setActivity(data)
+    })
 
     const data = activity && activity?.map((element) => {
         element.weekDay = element.day.slice(-2)
@@ -81,18 +78,18 @@ function BarsChart() {
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload) {
         return (
-          <div className="customtooltip__container">
-            <p className="customtooltip__label">{`${payload[0].value}`}kg</p>
-            <p className="customtooltip__label">{`${payload[1].value}`}KCal</p>
-          </div>
+            <div className="customtooltip__container">
+                <p className="customtooltip__label">{`${payload[0].value}`}kg</p>
+                <p className="customtooltip__label">{`${payload[1].value}`}KCal</p>
+            </div>
         );
-      }
+    }
 
-      CustomTooltip.propTypes = {
+    CustomTooltip.propTypes = {
         active: PropTypes.bool,
         payload: PropTypes.array
     }
-      return null;
+    return null;
 };
 
 export default BarsChart;

@@ -5,11 +5,11 @@ import IndicatorCard from "../../Components/IndicatorCard/IndicatorCard";
 import SideBar from "../../Components/SideBar/SideBar";
 import "./dashboard.css"
 import { useParams } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import RadialBarsChart from "../../Components/RadialBarsChart/RadialBarsChart";
 import AreasChart from "../../Components/AreasChart/AreasChart";
 import RadarsChart from "../../Components/RadarsChart/RadarsChart";
+import { getDashboardData } from "../../service";
 
 /**
  *@name Dashboard
@@ -25,16 +25,14 @@ function Dashboard() {
     const [carbohydrateCount, setCarbohydrateCount] = useState(0);
     const [lipidCount, setLipidCount] = useState(0);
 
-    useEffect(() => {
-        axios.get(`http://localhost:3000/user/${id}`)
-            .then(response => {
-                setfirstName(response.data.data.userInfos.firstName)
-                setCalorieCount(response.data.data.keyData.calorieCount)
-                setProteinCount(response.data.data.keyData.proteinCount)
-                setCarbohydrateCount(response.data.data.keyData.carbohydrateCount)
-                setLipidCount(response.data.data.keyData.lipidCount)
-            })
-    });
+
+    getDashboardData(id).then(data => {
+        setfirstName(data.userInfos.firstName)
+        setCalorieCount(data.keyData.calorieCount)
+        setProteinCount(data.keyData.proteinCount)
+        setCarbohydrateCount(data.keyData.carbohydrateCount)
+        setLipidCount(data.keyData.lipidCount)
+    })
 
     return (
         <Fragment>

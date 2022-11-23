@@ -8,9 +8,9 @@ import {
     Line,
 } from "recharts";
 import { useParams } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { getSessionsData } from "../../service";
 
 /**
  *@name AreasChart
@@ -22,12 +22,10 @@ function AreasChart() {
     const { id } = useParams();
     const [sessionsLength, setSessionsLength] = useState(0);
 
-    useEffect(() => {
-        axios.get(`http://localhost:3000/user/${id}/average-sessions`)
-            .then(response => {
-                setSessionsLength(response.data.data.sessions)
-            })
-    }, [id]);
+
+    getSessionsData(id).then(data => {
+        setSessionsLength(data)
+    })
 
     const data = sessionsLength && sessionsLength?.map((session) => {
         if (session.day === 1) { session.weekDay = "L" }
@@ -39,7 +37,7 @@ function AreasChart() {
         if (session.day === 7) { session.weekDay = "D" }
         return session
     })
-    
+
 
     return (
         <ResponsiveContainer>

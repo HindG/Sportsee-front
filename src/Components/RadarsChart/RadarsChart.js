@@ -8,8 +8,8 @@ import {
 } from "recharts";
 import "./radarschart.css";
 import { useParams } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import { getPerformanceData } from "../../service";
 
 /**
  *@name RadarsChart
@@ -21,12 +21,9 @@ function RadarsChart() {
     const { id } = useParams();
     const [performances, setPerformances] = useState(0);
 
-    useEffect(() => {
-        axios.get(`http://localhost:3000/user/${id}/performance`)
-            .then(response => {
-                setPerformances(response.data?.data)
-            })
-    }, [id]);
+    getPerformanceData(id).then(data => {
+        setPerformances(data)
+    })
 
 
     const data = performances?.data ? performances.data.map((performance) => ({
@@ -39,15 +36,15 @@ function RadarsChart() {
         <ResponsiveContainer width='100%' height='100%'>
             <RadarChart outerRadius={70} innerRadius={10} data={data} startAngle={390} endAngle={30} >
                 <PolarGrid radialLines={false} />
-                <PolarAngleAxis 
-                dataKey="kind" 
-                tick={{
-                    fontFamily: 'Roboto', fontSize: 12,
-                    fill: '#FFFFFF'
-                }}
-                axisLine={false}
-                width={30}
-                tickLine={false} />
+                <PolarAngleAxis
+                    dataKey="kind"
+                    tick={{
+                        fontFamily: 'Roboto', fontSize: 12,
+                        fill: '#FFFFFF'
+                    }}
+                    axisLine={false}
+                    width={30}
+                    tickLine={false} />
                 <PolarRadiusAxis axisLine={false} tick={false} tickCount={6} domain={[0, 200]} />
                 <Radar name="performance" dataKey="value" fill="#ff0000" fillOpacity={0.6} />
             </RadarChart>
