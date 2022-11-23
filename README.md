@@ -1,6 +1,9 @@
 # SportSee - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## General information
+
+This repository contains the source code to run the front end application of Sportsee Sports Analytics.\
+Please download and run [project back end](https://github.com/HindG/Sportsee-back.git) before running front end.
 
 ## Available Scripts
 
